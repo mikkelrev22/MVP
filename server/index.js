@@ -4,8 +4,8 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const port = 3636
 
-app.use(morgan())
-app.use(bodyParser())
+app.use(morgan('dev'))
+app.use(bodyParser.json())
 
 //server static files
 
