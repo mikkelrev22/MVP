@@ -14,6 +14,7 @@ class App extends React.Component {
     }
     this.handleClickSelect = this.handleClickSelect.bind(this)
     this.handleClickItem = this.handleClickItem.bind(this)
+    this.getItem = this.getItem.bind(this)
   }
   handleClickSelect() {
     this.setState({
@@ -22,9 +23,16 @@ class App extends React.Component {
   }
 
   handleClickItem(e) {
-    console.log(e.target.id)
-    axios.get('/items',(err, data)=>{
-      
+   this.getItem(e)
+  }
+
+  getItem(e) {
+    axios.get(`/items/${e.target.id}`)
+    .then((response)=>{
+      console.log(response)
+    })
+    .catch((error)=>{
+      console.log(error)
     })
   }
   
