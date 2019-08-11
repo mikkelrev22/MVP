@@ -1,4 +1,5 @@
-const dataArray = [
+
+exports.dataArray = [
   {itemName: 'Force of Nature', combo: ['spatula', 'spatula'], description: 'Gain +1 team size'},
   {itemName: 'Blade of the Ruined King', combo: ['spatula', 'recurvebow'], description: 'Wearer is also a Blademaster'},
   {itemName: 'Bloodthirster', combo: ['bfsword', 'negatroncloak'], description: 'Attacks heal for 50% of damage'},
@@ -36,3 +37,4 @@ const dataArray = [
   {itemName: 'Zeke\'s Herald', combo: ['bfsword', 'giantsbelt'], description: 'On start of combat, allies 2 spaces to the left and right gain +15% Attack Speed'},
   {itemName: 'Zephyr', combo: ['negatroncloak', 'giantsbelt'], description: 'On start of combat banish an enemy'}
 ] 
+

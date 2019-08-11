@@ -9,5 +9,4 @@ const tftItemSchema = new mongoose.Schema({
 })
 
 const tftItem = mongoose.model('tftItem', tftItemSchema, 'tftItemz')
-
-module.exports = tftItem
+module.exports= tftItem;
