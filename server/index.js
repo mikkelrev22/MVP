@@ -5,10 +5,12 @@ const bodyParser = require('body-parser')
 const port = 3636
 const tftItem = require('../database/schema.js')
 
+
 app.use(morgan('dev'))
 app.use(bodyParser.json())
-
 //server static files
+app.use(express.static(__dirname + '/../client/dist'))
+
 
 //GET request to MongoDB model
 app.get('/items/:itemName', (req, res)=>{

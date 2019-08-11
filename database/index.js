@@ -1,5 +1,5 @@
 //connection to Mongo DB model
-const {dataArray} = require('./script.js')
+const {dataArray} = require('./data.js')
 const mongoose = require('mongoose')
 const tftItem = require('./schema.js')
 const mongoUri = 'mongodb://localhost/items'
