@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import PossibleItems from './PossibleItems.jsx'
-
+import Saved from './Saved.jsx'
 
 class App extends React.Component {
   constructor () {
@@ -10,13 +10,17 @@ class App extends React.Component {
       view: false,
       basicItem1: '',
       possibleItems: [],
-      results: '',
-      saved: '',
+      selected: '',
+      saved: []
     }
     this.handleClickSelect = this.handleClickSelect.bind(this)
     this.handleClickItem = this.handleClickItem.bind(this)
     this.getItem = this.getItem.bind(this)
+    this.handleClickDesiredItem = this.handleClickDesiredItem.bind(this)
+    this.handleSave = this.handleSave.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
+  
   handleClickSelect() {
     if (!this.state.view) {
     this.setState({
@@ -25,7 +29,9 @@ class App extends React.Component {
   }
     if (this.state.view) {
       this.setState({
-        view: false
+        view: false,
+        basicItem1: '',
+        possibleItems: []
       })
     }
   }
@@ -40,6 +46,25 @@ class App extends React.Component {
   })
   }
 
+  handleClickDesiredItem(e) {
+    this.setState({
+      selected: e.target.name
+    })
+  }
+  handleSave() {
+    this.setState({
+      saved: [...this.state.saved, this.state.selected],
+      selected: ''
+    })
+  }
+  handleDelete(event){
+    if (event.target.id==="delete"){
+      const saved = this.state.saved.filter(savedItem=> savedItem !== event.target.name)
+      this.setState({
+        saved: [...saved]
+      })
+    }
+  }
   getItem(e) {
     axios.get(`/items/${e.target.id}`)
     .then((response)=>{
@@ -73,9 +98,25 @@ class App extends React.Component {
          }
          {this.state.view === true && 
          <div>
-         <PossibleItems possibleItems={this.state.possibleItems}/>
+         <PossibleItems possibleItems={this.state.possibleItems} handleClickDesiredItem={this.handleClickDesiredItem}/>
          </div>
          }
+         {this.state.selected.length>0 &&
+        <div>
+          <h2>
+          {this.state.selected}
+          <button onClick= {this.handleSave}>Save</button>
+          </h2>
+        </div>
+        }
+        {this.state.saved.length>0 &&
+        <div>
+          Saved Items
+          <h1>
+            <Saved saved={this.state.saved} handleDelete={this.handleDelete}/> 
+          </h1>
+        </div>
+        }
       </div>
     )
   }

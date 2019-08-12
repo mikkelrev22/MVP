@@ -3,8 +3,10 @@ import React from 'react'
 const PossibleItems = (props) => {
   const items = props.possibleItems
   const listItems = items.map((e, i)=>
-      <li key={i}>
-        {e.itemName} {e.combo} {e.description}
+      <li key={i} >
+        <a onClick={props.handleClickDesiredItem} 
+        name={e.itemName}>
+        {e.itemName} {e.combo} {e.description} </a>
       </li>
   )
   return (<ul>{listItems}</ul>)
