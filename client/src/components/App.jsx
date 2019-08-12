@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import PossibleItems from './PossibleItems.jsx'
 
 
 class App extends React.Component {
@@ -44,7 +45,7 @@ class App extends React.Component {
     .then((response)=>{
       response.data.forEach((e)=>{
       this.setState({
-        possibleItems: [...this.state.possibleItems, e.itemName]
+        possibleItems: [...this.state.possibleItems, e]
       })
       })
     })
@@ -71,7 +72,7 @@ class App extends React.Component {
         </div>
          }
          <div>
-
+         <PossibleItems possibleItems={this.state.possibleItems}/>
          </div>
       </div>
     )
