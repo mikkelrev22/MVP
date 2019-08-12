@@ -71,9 +71,11 @@ class App extends React.Component {
         <button onClick= {this.handleClickItem} id="spatula">Spatula</button>
         </div>
          }
+         {this.state.view === true && 
          <div>
          <PossibleItems possibleItems={this.state.possibleItems}/>
          </div>
+         }
       </div>
     )
   }
