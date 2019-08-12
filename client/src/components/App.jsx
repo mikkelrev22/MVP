@@ -17,12 +17,22 @@ class App extends React.Component {
     this.getItem = this.getItem.bind(this)
   }
   handleClickSelect() {
+    if (!this.state.view) {
     this.setState({
       view: true
     })
   }
+    if (this.state.view) {
+      this.setState({
+        view: false
+      })
+    }
+  }
 
   handleClickItem(e) {
+   this.setState({
+     possibleItems: []
+   })
    this.getItem(e)
    this.setState({
     basicItem1: e.target.id
@@ -60,6 +70,9 @@ class App extends React.Component {
         <button onClick= {this.handleClickItem} id="spatula">Spatula</button>
         </div>
          }
+         <div>
+
+         </div>
       </div>
     )
   }
