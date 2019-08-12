@@ -14,10 +14,21 @@ app.use(express.static(__dirname + '/../client/dist'))
 
 //GET request to MongoDB model
 app.get('/items/:itemName', (req, res)=>{
+  console.log(req.path);
+  
   tftItem.find({combo: {$in: req.params.itemName}}, (err, data)=>{
-    if (err) res.status(500)
+    if (err) return next(err)
     res.status(200).send(data)
   })
+})
+
+app.use((req, res, next) => {
+  res.send(404)
+})
+
+app.use((err, req, res, next) => {
+  console.log(err);
+  res.status(500).send(err.stack)
 })
 
 app.listen(port, ()=> {

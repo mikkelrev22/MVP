@@ -8,7 +8,7 @@ class App extends React.Component {
     this.state = {
       view: false,
       basicItem1: '',
-      possibleItems: '',
+      possibleItems: [],
       results: '',
       saved: '',
     }
@@ -24,18 +24,24 @@ class App extends React.Component {
 
   handleClickItem(e) {
    this.getItem(e)
+   this.setState({
+    basicItem1: e.target.id
+  })
   }
 
   getItem(e) {
     axios.get(`/items/${e.target.id}`)
     .then((response)=>{
-      console.log(response)
+      response.data.forEach((e)=>{
+      this.setState({
+        possibleItems: [...this.state.possibleItems, e.itemName]
+      })
+      })
     })
     .catch((error)=>{
       console.log(error)
     })
   }
-  
   render () {
     return (
       <div>

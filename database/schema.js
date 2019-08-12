@@ -1,7 +1,7 @@
 //Mongo DB model schema
 
 const mongoose = require('mongoose')
-
+const db = require('./index.js')
 const tftItemSchema = new mongoose.Schema({
   itemName: String,
   combo: Array,
@@ -9,4 +9,4 @@ const tftItemSchema = new mongoose.Schema({
 })
 
 const tftItem = mongoose.model('tftItem', tftItemSchema, 'tftItemz')
-module.exports= tftItem;
+module.exports = tftItem;
