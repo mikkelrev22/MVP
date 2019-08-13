@@ -6,7 +6,7 @@ const PossibleItems = (props) => {
       <li key={i} >
         <a onClick={props.handleClickDesiredItem} 
         name={e.itemName}>
-        {e.itemName} {e.combo} {e.description} </a>
+        {e.itemName} {`${e.combo[0]} + ${e.combo[1]}`} {e.description} </a>
       </li>
   )
   return (<ul>{listItems}</ul>)
