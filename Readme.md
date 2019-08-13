@@ -10,5 +10,7 @@
   "We guarentee victory" -- Pichael Thompson
 # Customer Quotes
   "TFT Quick Item Guide changed my life" -- Isaiah Santala
+
   "Boom! Tough actin' Tenactin!" -- John Madden
+  
   "I still suck at TFT cuz I don't use the guide. Don't be like me." -- Daniel "Noob" Park
