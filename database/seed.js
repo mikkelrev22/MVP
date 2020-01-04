@@ -1,4 +1,4 @@
-const tftItem = require('.schema/js')
+const tftItem = require('./schema.js')
 const {dataArray} = require('./data.js')
 const seed = ()=>{
   tftItem.create(dataArray)
